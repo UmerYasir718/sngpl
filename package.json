@@ -1,0 +1,15 @@
+{
+  "name": "sngpl-automation",
+  "version": "1.0.0",
+  "description": "Automation script for generating PDFs from reference numbers",
+  "type": "module",
+  "main": "scripts/automation.js",
+  "scripts": {
+    "start": "node scripts/automation.js"
+  },
+  "dependencies": {
+    "fs-extra": "^11.2.0",
+    "puppeteer": "^22.0.0",
+    "xlsx": "^0.18.5"
+  }
+}
