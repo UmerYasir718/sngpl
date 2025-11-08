@@ -68,7 +68,7 @@ echo.
 echo 🔎 Verifying Git version...
 git --version
 
-:: --- STEP 8: Clone project repository ---
+:: --- STEP 8: Clone or update project repository ---
 echo.
 set "TARGET_DIR=%~dp0sngpl_automate"
 set "REPO_URL=https://github.com/UmerYasir718/sngpl"
@@ -88,9 +88,25 @@ if exist "%TARGET_DIR%" (
         pause
         exit /b
     )
+    cd /d "%TARGET_DIR%"
 )
 
-:: --- STEP 9: Final Confirmation ---
+:: --- STEP 9: Install npm dependencies if package.json exists ---
+echo.
+if exist "package.json" (
+    echo 📦 Installing npm dependencies...
+    call npm install
+    if %errorlevel% neq 0 (
+        echo ❌ npm install failed. Please check for issues.
+        pause
+        exit /b
+    )
+    echo ✅ npm install completed successfully!
+) else (
+    echo ⚠️ No package.json found — skipping npm install.
+)
+
+:: --- STEP 10: Final Confirmation ---
 echo.
 echo =====================================================
 echo ✅ Everything is OK and good to go! 🎉
