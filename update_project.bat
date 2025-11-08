@@ -13,7 +13,7 @@ cd /d "%PROJECT_DIR%"
 echo 📂 Working directory: %PROJECT_DIR%
 
 :: --- STEP 2: Set your Git repo URL (change if needed) ---
-set "GIT_REPO=https://github.com/your-username/your-repo.git"
+set "GIT_REPO=https://github.com/UmerYasir718/sngpl"
 
 :: --- STEP 3: Verify Git availability ---
 where git >nul 2>&1

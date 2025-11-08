@@ -68,10 +68,33 @@ echo.
 echo 🔎 Verifying Git version...
 git --version
 
-:: --- STEP 8: Final Check ---
+:: --- STEP 8: Clone project repository ---
+echo.
+set "TARGET_DIR=%~dp0sngpl_automate"
+set "REPO_URL=https://github.com/UmerYasir718/sngpl"
+
+echo 📁 Checking for project folder...
+if exist "%TARGET_DIR%" (
+    echo ⚙️ Project folder already exists: %TARGET_DIR%
+    echo 🔄 Updating existing repository...
+    cd /d "%TARGET_DIR%"
+    git fetch --all
+    git pull origin main
+) else (
+    echo 📦 Cloning repository into: %TARGET_DIR%
+    git clone "%REPO_URL%" "%TARGET_DIR%"
+    if %errorlevel% neq 0 (
+        echo ❌ Failed to clone repository. Check your network or repo URL.
+        pause
+        exit /b
+    )
+)
+
+:: --- STEP 9: Final Confirmation ---
 echo.
 echo =====================================================
 echo ✅ Everything is OK and good to go! 🎉
+echo 📂 Project location: %TARGET_DIR%
 echo =====================================================
 echo.
 pause
